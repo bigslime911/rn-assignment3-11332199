@@ -29,3 +29,11 @@ FlatList: it Displays the list of active jobs in a vertical format.
 Every work item includes:
 Wraps the task text in the view.
 Text: it Shows the description of the work.
+
+StyleSheet
+It contains all the styles of the project.
+
+ScreenShot of the App
+![Assignment](https://github.com/bigslime911/rn-assignment3-11332199/assets/145637377/e6adf6af-7969-4dac-a351-8a77428d515e)
+
+
