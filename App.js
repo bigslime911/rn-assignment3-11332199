@@ -1,6 +1,7 @@
 import { View, Text , SafeAreaView, FlatList, TextInput, Image, TouchableOpacity, ScrollView, StyleSheet} from 'react-native'
 import React from 'react'
 import CategoryMockUp from './src/MockUpData/CategoryMockUp'
+import OngoingTaskMockUp from './src/MockUpData/OngoingTaskMockUp'
 
 const App = () => {
   return (
@@ -51,7 +52,20 @@ const App = () => {
             contentContainerStyle={{columnGap: 15}}
             />
         </View>
-        <View></View>
+        <View>
+          <Text style={styles.category}>Ongoing Task</Text>
+        </View>
+        <View>
+          <FlatList
+            data={OngoingTaskMockUp}
+            keyExtractor={item=>(item.id.toString())}
+            renderItem={({item})=>(
+              <View style={styles.Ongoing}>
+                <Text style={styles.OngoingText}>{item.text}</Text>
+              </View>
+            )}
+           contentContainerStyle={{rowGap:15}}/>
+        </View>
       </ScrollView>
     </SafeAreaView>
   )
@@ -118,6 +132,20 @@ const styles = StyleSheet.create({
   categoryText:{
     fontSize:15,
     fontWeight: "bold",
+  },
+  Ongoing:{
+    backgroundColor: "#fff",
+    paddingTop: 50,
+    paddingBottom: 50,
+    paddingLeft: 20,
+    borderRadius: 15,
+    borderWidth: 1,
+    borderColor: "#E8D1BA"
+  },
+  OngoingText:{
+    fontSize: 20,
+    fontWeight: "bold"
   }
+  
   
 });
