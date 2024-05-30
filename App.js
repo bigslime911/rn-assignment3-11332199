@@ -1,10 +1,11 @@
 import { View, Text , SafeAreaView, FlatList, TextInput, Image, TouchableOpacity, ScrollView, StyleSheet} from 'react-native'
 import React from 'react'
+import CategoryMockUp from './src/MockUpData/CategoryMockUp'
 
 const App = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollstyle}>
+      <ScrollView style={styles.scrollstyle} showsVerticalScrollIndicator={false}>
         <View style={styles.profile}>
           <View style={{marginTop:"10px"}}>
             <View>
@@ -30,6 +31,27 @@ const App = () => {
             Categories
           </Text>
         </View>
+        <View>
+          <FlatList
+            data={CategoryMockUp}
+            keyExtractor={item => item.id.toString()}
+            renderItem={({item})=>(
+              <View style={styles.categoryItems}>
+                <View>
+                  <Text style={styles.categoryText}>{item.title}</Text>
+                  <Text>{item.task}</Text>
+                </View>
+                <View>
+                  <Image source={item.image}/>
+                </View>
+              </View>
+            )}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{columnGap: 15}}
+            />
+        </View>
+        <View></View>
       </ScrollView>
     </SafeAreaView>
   )
@@ -45,6 +67,7 @@ const styles = StyleSheet.create({
   flex:1,
   backgroundColor:"#F7F0E8",
   gap: 5,
+
   
   
  
@@ -83,7 +106,18 @@ const styles = StyleSheet.create({
   category:{
   marginTop: 25,
   fontSize: 15,
-  fontWeight: "bold"
+  fontWeight: "bold",
+  marginBottom: 15,
+  },
+  categoryItems:{
+    backgroundColor: "#fff",
+    padding: 20,
+    borderRadius: 10,
+    
+  },
+  categoryText:{
+    fontSize:15,
+    fontWeight: "bold",
   }
   
 });
